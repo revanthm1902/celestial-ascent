@@ -8,10 +8,10 @@ const socialLinks = [
 ];
 
 const quickLinks = [
-  { name: 'Game Overview', href: '#' },
-  { name: 'Characters', href: '#' },
-  { name: 'Media', href: '#' },
-  { name: 'Community', href: '#' },
+  { name: 'Learning Realms', href: '#kingdoms' },
+  { name: 'Instructors', href: '#characters' },
+  { name: 'Media', href: '#media' },
+  { name: 'Community', href: '#community' },
   { name: 'Support', href: '#' },
 ];
 
@@ -43,8 +43,8 @@ const Footer = () => {
               transition={{ delay: 0.1 }}
               className="text-muted-foreground max-w-md mb-6 font-body"
             >
-              Embark on an epic adventure through celestial realms. 
-              Join millions of players in the most immersive fantasy experience ever created.
+              Master the mysteries of physics through interactive lessons and stunning animations. 
+              Join thousands of learners exploring the fundamental forces of the universe.
             </motion.p>
 
             {/* App Store Badges */}
@@ -153,7 +153,7 @@ const Footer = () => {
               viewport={{ once: true }}
               className="text-muted-foreground text-sm font-body"
             >
-              © 2024 ARYVERSE Studios. All Rights Reserved.
+              © 2026 ARYVERSE Studios. All Rights Reserved.
             </motion.p>
             
             <motion.div

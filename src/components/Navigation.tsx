@@ -1,17 +1,23 @@
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 
 const navLinks = [
   { name: 'Home', href: '#' },
-  { name: 'Kingdoms', href: '#kingdoms' },
-  { name: 'Characters', href: '#' },
-  { name: 'Media', href: '#' },
-  { name: 'Community', href: '#' },
+  { name: 'Realms', href: '#kingdoms' },
+  { name: 'Instructors', href: '#characters' },
+  { name: 'Media', href: '#media' },
+  { name: 'Community', href: '#community' },
 ];
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+
+  const { scrollY } = useScroll();
+  
+  // Fade navbar based on scroll - starts fading after hero section
+  const navOpacity = useTransform(scrollY, [0, 300, 800], [1, 1, 0.7]);
+  const navY = useTransform(scrollY, [0, 300, 800], [0, 0, -10]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,6 +34,7 @@ const Navigation = () => {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.8, ease: [0.6, 0, 0.2, 1] }}
+        style={{ opacity: navOpacity, y: navY }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled ? 'glass-strong py-4' : 'bg-transparent py-6'
         }`}
@@ -60,9 +67,11 @@ const Navigation = () => {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.5 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             className="hidden md:block btn-celestial text-sm py-2 px-6 hoverable"
           >
-            Play Now
+            Start Learning
           </motion.button>
 
           {/* Mobile Menu Button */}

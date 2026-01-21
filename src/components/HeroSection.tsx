@@ -88,7 +88,7 @@ const HeroSection = () => {
               transition={{ delay: 0.3, duration: 0.8 }}
               className="text-gold tracking-[0.4em] uppercase text-sm mb-6 font-body"
             >
-              A New Era Begins
+              Where Physics Meets Fantasy
             </motion.p>
 
             {/* Main Title */}
@@ -116,8 +116,8 @@ const HeroSection = () => {
               transition={{ delay: 1.2, duration: 0.8 }}
               className="text-lg md:text-xl text-muted-foreground max-w-lg mx-auto lg:mx-0 mb-10 font-body"
             >
-              Embark on an epic journey through celestial realms. 
-              Conquer legendary kingdoms and forge your destiny among the stars.
+              Master the mysteries of physics through interactive chapters and animated lessons. 
+              Explore electromagnetics, gravity, and more in an immersive fantasy world.
             </motion.p>
 
             {/* CTA Buttons */}
@@ -128,10 +128,10 @@ const HeroSection = () => {
               className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
             >
               <button className="btn-celestial hoverable">
-                Play Now
+                Start Learning
               </button>
               <button className="btn-ghost hoverable">
-                Watch Trailer
+                Explore Chapters
               </button>
             </motion.div>
 
@@ -143,9 +143,9 @@ const HeroSection = () => {
               className="flex gap-12 mt-16 justify-center lg:justify-start"
             >
               {[
-                { value: '10M+', label: 'Players' },
+                { value: '50+', label: 'Lessons' },
                 { value: '4.9', label: 'Rating' },
-                { value: '150+', label: 'Realms' },
+                { value: '12', label: 'Chapters' },
               ].map((stat, i) => (
                 <div key={i} className="text-center">
                   <p className="text-2xl md:text-3xl font-display font-bold text-gold text-glow">

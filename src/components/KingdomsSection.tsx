@@ -9,31 +9,31 @@ import kingdom3 from '@/assets/kingdom-3.jpg';
 const kingdoms = [
   {
     title: 'Aethoria',
-    description: 'A celestial kingdom floating among the clouds, where ancient magic flows through crystalline spires and the eternal sun casts golden light upon its blessed inhabitants.',
+    description: 'A celestial realm where electromagnetic forces dance through the skies. Master the principles of electricity, magnetism, and light through stunning visual animations and interactive lessons.',
     features: [
-      'Floating islands connected by light bridges',
-      'Ancient celestial magic system',
-      'Home to the legendary Sky Guardians',
+      'Electromagnetic field visualizations',
+      'Interactive Maxwell\'s equations lessons',
+      'Wave propagation animations',
     ],
     image: kingdom1,
   },
   {
     title: 'Abyssal Depths',
-    description: 'Deep beneath the endless ocean lies a realm of bioluminescent wonders, where the lost civilization of the Deep Ones guards secrets older than time itself.',
+    description: 'Dive deep into the fundamentals of gravity and gravitational forces. Explore orbital mechanics, tidal effects, and the curvature of spacetime with mesmerizing 3D simulations.',
     features: [
-      'Underwater crystal palaces',
-      'Bioluminescent flora and fauna',
-      'Ancient ruins with forbidden knowledge',
+      'Gravitational field simulations',
+      'Orbital mechanics tutorials',
+      'Spacetime curvature visualizations',
     ],
     image: kingdom2,
   },
   {
     title: 'Emberfell',
-    description: 'Forged in the heart of eternal volcanoes, this kingdom of obsidian and flame breeds the mightiest warriors and the most powerful forgemasters in all the realms.',
+    description: 'Harness the power of thermodynamics and energy transfer in this fiery realm. Learn about heat, entropy, and the laws of energy through dynamic animations and practical experiments.',
     features: [
-      'Volcanic fortress cities',
-      'Master blacksmiths and artificers',
-      'Dragon allies and war beasts',
+      'Thermodynamic process animations',
+      'Energy transfer simulations',
+      'Heat flow visualizations',
     ],
     image: kingdom3,
   },
@@ -78,7 +78,7 @@ const KingdomsSection = () => {
             transition={{ duration: 0.6 }}
             className="text-gold tracking-[0.4em] uppercase text-sm font-body block mb-6"
           >
-            Discover Your Destiny
+            Choose Your Path
           </motion.span>
 
           <motion.h2
@@ -87,7 +87,7 @@ const KingdomsSection = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-4xl md:text-5xl lg:text-7xl font-display font-bold text-stardust text-glow mb-6"
           >
-            The Kingdoms
+            Learning Realms
           </motion.h2>
 
           <motion.p
@@ -96,8 +96,8 @@ const KingdomsSection = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="text-muted-foreground text-lg max-w-2xl mx-auto font-body"
           >
-            Three legendary realms await your conquest. Each kingdom holds unique 
-            treasures, ancient powers, and challenges that will test your worth.
+            Three immersive realms of physics education. Each level contains interactive 
+            chapters, animated lessons, and challenges that will expand your knowledge.
           </motion.p>
         </motion.div>
 

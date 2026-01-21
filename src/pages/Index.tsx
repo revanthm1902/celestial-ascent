@@ -3,6 +3,9 @@ import Preloader from '@/components/Preloader';
 import Navigation from '@/components/Navigation';
 import HeroSection from '@/components/HeroSection';
 import KingdomsSection from '@/components/KingdomsSection';
+import CharactersSection from '@/components/CharactersSection';
+import MediaSection from '@/components/MediaSection';
+import CommunitySection from '@/components/CommunitySection';
 import Footer from '@/components/Footer';
 import CustomCursor from '@/components/CustomCursor';
 import ParticleField from '@/components/ParticleField';
@@ -25,6 +28,9 @@ const Index = () => {
           <main className="relative">
             <HeroSection />
             <KingdomsSection />
+            <CharactersSection />
+            <MediaSection />
+            <CommunitySection />
           </main>
           <Footer />
         </SmoothScroll>
