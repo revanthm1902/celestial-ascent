@@ -93,7 +93,7 @@ const KingdomCard = ({
       {/* Image with 3D Tilt */}
       <motion.div
         ref={imageRef}
-        className={`relative overflow-hidden rounded-2xl aspect-square lg:aspect-[4/3] ${
+        className={`relative overflow-hidden rounded-2xl aspect-square lg:aspect-square ${
           isReversed ? 'lg:col-start-2' : ''
         }`}
         variants={itemVariants}
@@ -106,10 +106,22 @@ const KingdomCard = ({
           transformStyle: 'preserve-3d',
         }}
         whileHover={{ scale: 1.02 }}
-        transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+        animate={{
+          y: [0, -20, 0],
+        }}
+        transition={{ 
+          type: 'spring', 
+          stiffness: 300, 
+          damping: 30,
+          y: {
+            repeat: Infinity,
+            duration: 4,
+            ease: 'easeInOut',
+          }
+        }}
       >
         <motion.div
-          className="absolute inset-0"
+          className="absolute inset-0 scale-125"
           style={{ 
             y: imageY, 
             scale: imageScale,
@@ -119,7 +131,7 @@ const KingdomCard = ({
           <img
             src={image}
             alt={title}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-contain"
           />
         </motion.div>
         
@@ -128,38 +140,7 @@ const KingdomCard = ({
           className="absolute inset-0 bg-gradient-to-t from-void via-transparent to-transparent opacity-60"
           style={{ transform: 'translateZ(10px)' }}
         />
-        
-        {/* Decorative border */}
-        <motion.div 
-          className="absolute inset-0 border border-gold/20 rounded-2xl"
-          animate={{
-            borderColor: isHovered ? 'rgba(212, 175, 55, 0.5)' : 'rgba(212, 175, 55, 0.2)',
-          }}
-        />
-        
-        {/* Corner accents with parallax */}
-        <motRealv 
-          className="absolute top-4 left-4 w-12 h-12 border-l-2 border-t-2 border-gold/40"
-          style={{ transform: 'translateZ(20px)' }}
-        />
-        <motion.div 
-          className="absolute bottom-4 right-4 w-12 h-12 border-r-2 border-b-2 border-gold/40"
-          style={{ transform: 'translateZ(20px)' }}
-        />
-        
-        {/* Kingdom number with depth */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0 }}
-          animate={isInView ? { opacity: 1, scale: 1 } : {}}
-          transition={{ delay: 0.5, duration: 0.5 }}
-          className="absolute top-6 right-6 w-14 h-14 rounded-full glass-strong flex items-center justify-center"
-          style={{ transform: 'translateZ(30px)' }}
-          whileHover={{ scale: 1.1, rotate: 360 }}
-        >
-          <span className="font-display text-xl font-bold text-gold">
-            {String(index + 1).padStart(2, '0')}
-          </span>
-        </motion.div>
+
 
         {/* Spotlight effect on hover */}
         <motion.div
@@ -213,23 +194,6 @@ const KingdomCard = ({
             </motion.li>
           ))}
         </motion.ul>
-
-        <motion.button
-          variants={itemVariants}
-          whileHover={{ scale: 1.05, x: 5 }}
-          whileTap={{ scale: 0.95 }}
-          className="btn-ghost mt-4 hoverable group"
-        >
-          <span className="flex items-center gap-2">
-            Start Learning
-            <motion.span
-              animate={{ x: [0, 5, 0] }}
-              transition={{ repeat: Infinity, duration: 1.5 }}
-            >
-              →
-            </motion.span>
-          </span>
-        </motion.button>
       </motion.div>
     </motion.div>
   );

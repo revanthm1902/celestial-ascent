@@ -112,7 +112,7 @@ const Preloader = ({ onComplete }: PreloaderProps) => {
                     variants={letterVariants}
                     initial="hidden"
                     animate="visible"
-                    className="font-display text-5xl md:text-7xl lg:text-9xl font-bold text-stardust text-glow-strong"
+                    className="font-display text-5xl md:text-7xl lg:text-9xl font-bold text-stardust text-glow"
                   >
                     {letter}
                   </motion.span>

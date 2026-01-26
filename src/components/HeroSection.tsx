@@ -125,7 +125,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.5, duration: 0.8 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+              className="hidden flex-col sm:flex-row gap-4 justify-center lg:justify-start"
             >
               <button className="btn-celestial hoverable">
                 Start Learning
@@ -133,29 +133,6 @@ const HeroSection = () => {
               <button className="btn-ghost hoverable">
                 Explore Chapters
               </button>
-            </motion.div>
-
-            {/* Stats */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 2, duration: 1 }}
-              className="flex gap-12 mt-16 justify-center lg:justify-start"
-            >
-              {[
-                { value: '8', label: 'Lessons' },
-                { value: '4.2', label: 'Rating' },
-                { value: '3', label: 'Chapters' },
-              ].map((stat, i) => (
-                <div key={i} className="text-center">
-                  <p className="text-2xl md:text-3xl font-display font-bold text-gold text-glow">
-                    {stat.value}
-                  </p>
-                  <p className="text-xs uppercase tracking-widest text-muted-foreground mt-1">
-                    {stat.label}
-                  </p>
-                </div>
-              ))}
             </motion.div>
           </motion.div>
 

@@ -1,15 +1,13 @@
 import { useState, Suspense } from 'react';
 import Preloader from '@/components/Preloader';
-import Navigation from '@/components/Navigation';
 import HeroSection from '@/components/HeroSection';
 import KingdomsSection from '@/components/KingdomsSection';
-import CharactersSection from '@/components/CharactersSection';
-import MediaSection from '@/components/MediaSection';
-import CommunitySection from '@/components/CommunitySection';
 import Footer from '@/components/Footer';
 import CustomCursor from '@/components/CustomCursor';
 import ParticleField from '@/components/ParticleField';
 import SmoothScroll from '@/components/SmoothScroll';
+import ScrollToTop from '@/components/ScrollToTop';
+import Logo from '@/components/Logo';
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -20,19 +18,17 @@ const Index = () => {
       
       {!isLoading && (
         <SmoothScroll>
+          
           <CustomCursor />
           <Suspense fallback={null}>
             <ParticleField />
           </Suspense>
-          <Navigation />
           <main className="relative">
             <HeroSection />
             <KingdomsSection />
-            <CharactersSection />
-            <MediaSection />
-            <CommunitySection />
           </main>
           <Footer />
+          <ScrollToTop />
         </SmoothScroll>
       )}
     </>

@@ -2,38 +2,38 @@ import { useRef } from 'react';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import KingdomCard from './KingdomCard';
 
-import kingdom1 from '@/assets/kingdom-1.jpg';
-import kingdom2 from '@/assets/kingdom-2.jpg';
-import kingdom3 from '@/assets/kingdom-3.jpg';
+import kingdom1 from '@/assets/kingdom-0.png';
+import kingdom2 from '@/assets/kingdom-1.png';
+import kingdom3 from '@/assets/kingdom-2.png';
 
 const kingdoms = [
   {
-    title: 'Aethoria',
-    description: 'A celestial realm where electromagnetic forces dance through the skies. Master the principles of electricity, magnetism, and light through stunning visual animations and interactive lessons.',
+    title: 'Learning',
+    description: 'Master the fundamentals through interactive lessons and comprehensive tutorials. Build your knowledge step by step with our carefully crafted educational content and hands-on practice modules.',
     features: [
-      'Electromagnetic field visualizations',
-      'Interactive Maxwell\'s equations lessons',
-      'Wave propagation animations',
+      'Interactive tutorials and lessons',
+      'Step-by-step guided learning paths',
+      'Practice exercises and quizzes',
     ],
     image: kingdom1,
   },
   {
-    title: 'Abyssal Depths',
-    description: 'Dive deep into the fundamentals of gravity and gravitational forces. Explore orbital mechanics, tidal effects, and the curvature of spacetime with mesmerizing 3D simulations.',
+    title: 'Ranking',
+    description: 'Track your progress and compete with others on the leaderboards. Climb the ranks by completing challenges, earning achievements, and demonstrating your mastery of physics concepts.',
     features: [
-      'Gravitational field simulations',
-      'Orbital mechanics tutorials',
-      'Spacetime curvature visualizations',
+      'Global leaderboard rankings',
+      'Achievement system and badges',
+      'Progress tracking and analytics',
     ],
     image: kingdom2,
   },
   {
-    title: 'Emberfell',
-    description: 'Harness the power of thermodynamics and energy transfer in this fiery realm. Learn about heat, entropy, and the laws of energy through dynamic animations and practical experiments.',
+    title: 'Gaming',
+    description: 'Learn through play with engaging physics-based games and challenges. Apply your knowledge in fun, interactive scenarios that make learning enjoyable and memorable.',
     features: [
-      'Thermodynamic process animations',
-      'Energy transfer simulations',
-      'Heat flow visualizations',
+      'Physics-based game challenges',
+      'Interactive simulations',
+      'Multiplayer learning competitions',
     ],
     image: kingdom3,
   },
@@ -80,25 +80,6 @@ const KingdomsSection = () => {
           >
             Choose Your Path
           </motion.span>
-
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            animate={isTitleInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-4xl md:text-5xl lg:text-7xl font-display font-bold text-stardust text-glow mb-6"
-          >
-            Learning Realms
-          </motion.h2>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={isTitleInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-muted-foreground text-lg max-w-2xl mx-auto font-body"
-          >
-            Three immersive realms of physics education. Each level contains interactive 
-            chapters, animated lessons, and challenges that will expand your knowledge.
-          </motion.p>
         </motion.div>
 
         {/* Kingdom Cards */}
