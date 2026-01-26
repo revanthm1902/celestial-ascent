@@ -169,7 +169,7 @@
 
   /* Section styling */
   .section-padding {
-    @apply px-6 md:px-12 lg:px-24 py-20 md:py-32;
+    @apply px-6 md:px-12 lg:px-24 py-8 md:py-20 lg:py-32;
   }
 
   /* Kingdom Card */
