@@ -2,30 +2,30 @@ import { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
 const stats = [
-  { value: '10K+', label: 'Active Learners', icon: <svg viewBox="0 0 24 24" fill="none" className="w-full h-full"><defs><linearGradient id="users-grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stopColor="#3b82f6"/><stop offset="100%" stopColor="#8b5cf6"/></linearGradient></defs><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" fill="url(#users-grad)"/></svg> },
-  { value: '500+', label: 'Study Groups', icon: <svg viewBox="0 0 24 24" fill="none" className="w-full h-full"><defs><linearGradient id="books-grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stopColor="#10b981"/><stop offset="100%" stopColor="#06b6d4"/></linearGradient></defs><path d="M21 5c-1.11-.35-2.33-.5-3.5-.5-1.95 0-4.05.4-5.5 1.5-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1zm0 13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V8c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5v11.5z" fill="url(#books-grad)"/></svg> },
-  { value: '1M+', label: 'Questions Answered', icon: <svg viewBox="0 0 24 24" fill="none" className="w-full h-full"><defs><linearGradient id="bulb-grad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stopColor="#fbbf24"/><stop offset="100%" stopColor="#f59e0b"/></linearGradient></defs><path d="M9 21c0 .5.4 1 1 1h4c.6 0 1-.5 1-1v-1H9v1zm3-19C8.1 2 5 5.1 5 9c0 2.4 1.2 4.5 3 5.7V17c0 .5.4 1 1 1h6c.6 0 1-.5 1-1v-2.3c1.8-1.3 3-3.4 3-5.7 0-3.9-3.1-7-7-7z" fill="url(#bulb-grad)"/></svg> },
-  { value: '4.9', label: 'Community Rating', icon: <svg viewBox="0 0 24 24" fill="none" className="w-full h-full"><defs><linearGradient id="star2-grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stopColor="#fbbf24"/><stop offset="100%" stopColor="#f59e0b"/></linearGradient></defs><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="url(#star2-grad)"/></svg> },
+  { value: '250+', label: 'Active Learners', icon: <svg viewBox="0 0 24 24" fill="none" className="w-full h-full"><defs><linearGradient id="users-grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stopColor="#3b82f6"/><stop offset="100%" stopColor="#06b6d4"/></linearGradient></defs><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" fill="url(#users-grad)"/></svg> },
+  { value: '12', label: 'Study Groups', icon: <svg viewBox="0 0 24 24" fill="none" className="w-full h-full"><defs><linearGradient id="books-grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stopColor="#10b981"/><stop offset="100%" stopColor="#06b6d4"/></linearGradient></defs><path d="M21 5c-1.11-.35-2.33-.5-3.5-.5-1.95 0-4.05.4-5.5 1.5-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1zm0 13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V8c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5v11.5z" fill="url(#books-grad)"/></svg> },
+  { value: '1,200+', label: 'Questions Answered', icon: <svg viewBox="0 0 24 24" fill="none" className="w-full h-full"><defs><linearGradient id="bulb-grad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stopColor="#fbbf24"/><stop offset="100%" stopColor="#f59e0b"/></linearGradient></defs><path d="M9 21c0 .5.4 1 1 1h4c.6 0 1-.5 1-1v-1H9v1zm3-19C8.1 2 5 5.1 5 9c0 2.4 1.2 4.5 3 5.7V17c0 .5.4 1 1 1h6c.6 0 1-.5 1-1v-2.3c1.8-1.3 3-3.4 3-5.7 0-3.9-3.1-7-7-7z" fill="url(#bulb-grad)"/></svg> },
+  { value: '4.2', label: 'Community Rating', icon: <svg viewBox="0 0 24 24" fill="none" className="w-full h-full"><defs><linearGradient id="star2-grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stopColor="#fbbf24"/><stop offset="100%" stopColor="#f59e0b"/></linearGradient></defs><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="url(#star2-grad)"/></svg> },
 ];
 
 const features = [
   {
     title: 'Study Groups',
     description: 'Join collaborative learning circles with students from around the world',
-    icon: <svg viewBox="0 0 24 24" fill="none" className="w-full h-full"><defs><linearGradient id="group-grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stopColor="#3b82f6"/><stop offset="100%" stopColor="#8b5cf6"/></linearGradient></defs><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="url(#group-grad)" strokeWidth="2"/><circle cx="9" cy="7" r="4" stroke="url(#group-grad)" strokeWidth="2"/><path d="M23 21v-2a4 4 0 0 0-3-3.87m-4-12a4 4 0 0 1 0 7.75" stroke="url(#group-grad)" strokeWidth="2"/></svg>,
-    color: 'from-blue-500/20 to-purple-500/20',
+    icon: <svg viewBox="0 0 24 24" fill="none" className="w-full h-full"><defs><linearGradient id="group-grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stopColor="#3b82f6"/><stop offset="100%" stopColor="#06b6d4"/></linearGradient></defs><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="url(#group-grad)" strokeWidth="2"/><circle cx="9" cy="7" r="4" stroke="url(#group-grad)" strokeWidth="2"/><path d="M23 21v-2a4 4 0 0 0-3-3.87m-4-12a4 4 0 0 1 0 7.75" stroke="url(#group-grad)" strokeWidth="2"/></svg>,
+    color: 'from-blue-500/20 to-cyan-500/20',
   },
   {
     title: 'Live Sessions',
     description: 'Participate in real-time physics experiments and Q&A with instructors',
-    icon: <svg viewBox="0 0 24 24" fill="none" className="w-full h-full"><defs><linearGradient id="session-grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stopColor="#a855f7"/><stop offset="100%" stopColor="#ec4899"/></linearGradient></defs><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z" fill="url(#session-grad)"/></svg>,
-    color: 'from-purple-500/20 to-pink-500/20',
+    icon: <svg viewBox="0 0 24 24" fill="none" className="w-full h-full"><defs><linearGradient id="session-grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stopColor="#0891b2"/><stop offset="100%" stopColor="#06b6d4"/></linearGradient></defs><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z" fill="url(#session-grad)"/></svg>,
+    color: 'from-cyan-500/20 to-teal-500/20',
   },
   {
     title: 'Discussion Forums',
     description: 'Share insights, ask questions, and help fellow learners master concepts',
-    icon: <svg viewBox="0 0 24 24" fill="none" className="w-full h-full"><defs><linearGradient id="forum-grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stopColor="#ec4899"/><stop offset="100%" stopColor="#f97316"/></linearGradient></defs><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="url(#forum-grad)" strokeWidth="2"/></svg>,
-    color: 'from-pink-500/20 to-orange-500/20',
+    icon: <svg viewBox="0 0 24 24" fill="none" className="w-full h-full"><defs><linearGradient id="forum-grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stopColor="#14b8a6"/><stop offset="100%" stopColor="#f97316"/></linearGradient></defs><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="url(#forum-grad)" strokeWidth="2"/></svg>,
+    color: 'from-teal-500/20 to-orange-500/20',
   },
   {
     title: 'Leaderboards',
@@ -39,7 +39,7 @@ const testimonials = [
   {
     name: 'Sarah Chen',
     role: 'Physics Student',
-    avatar: <svg viewBox="0 0 24 24" fill="none" className="w-full h-full"><defs><linearGradient id="avatar1-grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stopColor="#ec4899"/><stop offset="100%" stopColor="#8b5cf6"/></linearGradient></defs><circle cx="12" cy="8" r="4" fill="url(#avatar1-grad)"/><path d="M12 14c-6 0-8 3-8 5v2h16v-2c0-2-2-5-8-5z" fill="url(#avatar1-grad)"/><path d="M17 10h2v2h2v2h-2v2h-2v-2h-2v-2h2v-2z" fill="url(#avatar1-grad)" opacity="0.6"/></svg>,
+    avatar: <svg viewBox="0 0 24 24" fill="none" className="w-full h-full"><defs><linearGradient id="avatar1-grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stopColor="#06b6d4"/><stop offset="100%" stopColor="#3b82f6"/></linearGradient></defs><circle cx="12" cy="8" r="4" fill="url(#avatar1-grad)"/><path d="M12 14c-6 0-8 3-8 5v2h16v-2c0-2-2-5-8-5z" fill="url(#avatar1-grad)"/><path d="M17 10h2v2h2v2h-2v2h-2v-2h-2v-2h2v-2z" fill="url(#avatar1-grad)" opacity="0.6"/></svg>,
     text: 'The interactive animations made electromagnetics finally click for me!',
   },
   {

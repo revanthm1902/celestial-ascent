@@ -42,14 +42,13 @@
     --void: 222 47% 5%;
     --void-deep: 222 60% 3%;
     --celestial-blue: 210 100% 60%;
-    --nebula-purple: 270 60% 50%;
     --stardust: 45 100% 96%;
     --gold: 45 100% 50%;
     --gold-dim: 45 80% 40%;
     --ember: 15 100% 50%;
 
     /* Gradients */
-    --gradient-celestial: linear-gradient(135deg, hsl(222 47% 8%) 0%, hsl(270 60% 15%) 50%, hsl(222 47% 5%) 100%);
+    --gradient-celestial: linear-gradient(135deg, hsl(222 47% 8%) 0%, hsl(210 60% 15%) 50%, hsl(222 47% 5%) 100%);
     --gradient-gold: linear-gradient(135deg, hsl(45 100% 50%) 0%, hsl(35 100% 60%) 50%, hsl(45 100% 45%) 100%);
     --gradient-void: linear-gradient(180deg, hsl(222 47% 5%) 0%, hsl(222 60% 3%) 100%);
     --gradient-glass: linear-gradient(135deg, hsla(220 60% 20% / 0.4) 0%, hsla(222 47% 10% / 0.2) 100%);

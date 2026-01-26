@@ -143,9 +143,9 @@ const HeroSection = () => {
               className="flex gap-12 mt-16 justify-center lg:justify-start"
             >
               {[
-                { value: '50+', label: 'Lessons' },
-                { value: '4.9', label: 'Rating' },
-                { value: '12', label: 'Chapters' },
+                { value: '8', label: 'Lessons' },
+                { value: '4.2', label: 'Rating' },
+                { value: '3', label: 'Chapters' },
               ].map((stat, i) => (
                 <div key={i} className="text-center">
                   <p className="text-2xl md:text-3xl font-display font-bold text-gold text-glow">

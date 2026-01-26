@@ -6,7 +6,7 @@ const mediaItems = [
     type: 'video',
     title: 'Electromagnetic Field Visualization',
     description: 'Watch electric and magnetic fields interact in real-time 3D simulations',
-    thumbnail: <svg viewBox="0 0 24 24" fill="none" className="w-full h-full"><defs><linearGradient id="video-grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stopColor="#3b82f6"/><stop offset="100%" stopColor="#8b5cf6"/></linearGradient></defs><path d="M8 5v14l11-7z" fill="url(#video-grad)"/><rect x="2" y="3" width="20" height="18" rx="2" fill="none" stroke="url(#video-grad)" strokeWidth="2"/></svg>,
+    thumbnail: <svg viewBox="0 0 24 24" fill="none" className="w-full h-full"><defs><linearGradient id="video-grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stopColor="#3b82f6"/><stop offset="100%" stopColor="#06b6d4"/></linearGradient></defs><path d="M8 5v14l11-7z" fill="url(#video-grad)"/><rect x="2" y="3" width="20" height="18" rx="2" fill="none" stroke="url(#video-grad)" strokeWidth="2"/></svg>,
     duration: '3:24',
   },
   {
@@ -20,21 +20,21 @@ const mediaItems = [
     type: 'gallery',
     title: 'Thermodynamic Processes',
     description: 'Explore heat flow and energy transfer through interactive diagrams',
-    thumbnail: <svg viewBox="0 0 24 24" fill="none" className="w-full h-full"><defs><linearGradient id="chart-grad" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stopColor="#10b981"/><stop offset="50%" stopColor="#3b82f6"/><stop offset="100%" stopColor="#8b5cf6"/></linearGradient></defs><path d="M3 3v18h18" stroke="url(#chart-grad)" strokeWidth="2"/><path d="M7 16l4-8 4 4 4-6" stroke="url(#chart-grad)" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/></svg>,
+    thumbnail: <svg viewBox="0 0 24 24" fill="none" className="w-full h-full"><defs><linearGradient id="chart-grad" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stopColor="#10b981"/><stop offset="50%" stopColor="#3b82f6"/><stop offset="100%" stopColor="#06b6d4"/></linearGradient></defs><path d="M3 3v18h18" stroke="url(#chart-grad)" strokeWidth="2"/><path d="M7 16l4-8 4 4 4-6" stroke="url(#chart-grad)" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/></svg>,
     items: '24 images',
   },
   {
     type: 'video',
     title: 'Wave Motion & Interference',
     description: 'See sound and light waves propagate and interfere in beautiful patterns',
-    thumbnail: <svg viewBox="0 0 24 24" fill="none" className="w-full h-full"><defs><linearGradient id="wave-grad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stopColor="#06b6d4"/><stop offset="50%" stopColor="#3b82f6"/><stop offset="100%" stopColor="#8b5cf6"/></linearGradient></defs><path d="M2 12c2-4 4-4 6 0s4 4 6 0 4-4 6 0" stroke="url(#wave-grad)" strokeWidth="2.5" strokeLinecap="round"/><path d="M2 16c2-3 4-3 6 0s4 3 6 0 4-3 6 0" stroke="url(#wave-grad)" strokeWidth="2" opacity="0.5" strokeLinecap="round"/></svg>,
+    thumbnail: <svg viewBox="0 0 24 24" fill="none" className="w-full h-full"><defs><linearGradient id="wave-grad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stopColor="#06b6d4"/><stop offset="50%" stopColor="#3b82f6"/><stop offset="100%" stopColor="#0ea5e9"/></linearGradient></defs><path d="M2 12c2-4 4-4 6 0s4 4 6 0 4-4 6 0" stroke="url(#wave-grad)" strokeWidth="2.5" strokeLinecap="round"/><path d="M2 16c2-3 4-3 6 0s4 3 6 0 4-3 6 0" stroke="url(#wave-grad)" strokeWidth="2" opacity="0.5" strokeLinecap="round"/></svg>,
     duration: '4:35',
   },
   {
     type: 'interactive',
     title: 'Particle Simulation Lab',
     description: 'Manipulate particles and observe quantum phenomena firsthand',
-    thumbnail: <svg viewBox="0 0 24 24" fill="none" className="w-full h-full"><defs><linearGradient id="atom-grad"><stop offset="0%" stopColor="#ec4899"/><stop offset="50%" stopColor="#8b5cf6"/><stop offset="100%" stopColor="#6366f1"/></linearGradient></defs><circle cx="12" cy="12" r="2" fill="url(#atom-grad)"/><ellipse cx="12" cy="12" rx="10" ry="4" stroke="url(#atom-grad)" strokeWidth="2" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" stroke="url(#atom-grad)" strokeWidth="2" transform="rotate(-60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" stroke="url(#atom-grad)" strokeWidth="2"/></svg>,
+    thumbnail: <svg viewBox="0 0 24 24" fill="none" className="w-full h-full"><defs><linearGradient id="atom-grad"><stop offset="0%" stopColor="#06b6d4"/><stop offset="50%" stopColor="#0891b2"/><stop offset="100%" stopColor="#3b82f6"/></linearGradient></defs><circle cx="12" cy="12" r="2" fill="url(#atom-grad)"/><ellipse cx="12" cy="12" rx="10" ry="4" stroke="url(#atom-grad)" strokeWidth="2" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" stroke="url(#atom-grad)" strokeWidth="2" transform="rotate(-60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" stroke="url(#atom-grad)" strokeWidth="2"/></svg>,
     items: 'Interactive',
   },
   {
