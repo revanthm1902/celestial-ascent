@@ -6,7 +6,7 @@ import nebulaHero from '@/assets/nebula-hero.jpg';
 const HeroSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  
+
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ['start start', 'end start'],
@@ -53,31 +53,31 @@ const HeroSection = () => {
   const title = 'ARYVERSE';
 
   return (
-    <section 
+    <section
       ref={sectionRef}
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
       {/* Background */}
-      <motion.div 
+      <motion.div
         className="absolute inset-0 z-0"
         style={{ y: backgroundY }}
       >
-        <img 
-          src={nebulaHero} 
-          alt="" 
+        <img
+          src={nebulaHero}
+          alt=""
           className="w-full h-[120%] object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-void/40 via-void/60 to-void" />
       </motion.div>
 
       {/* Content */}
-      <motion.div 
+      <motion.div
         className="relative z-20 section-padding w-full"
         style={{ opacity }}
       >
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
           {/* Left - Text Content */}
-          <motion.div 
+          <motion.div
             className="text-center lg:text-left"
             style={{ y: textY }}
           >
@@ -88,7 +88,7 @@ const HeroSection = () => {
               transition={{ delay: 0.3, duration: 0.8 }}
               className="text-gold tracking-[0.4em] uppercase text-sm mb-6 font-body"
             >
-              Where Physics Meets Fantasy
+              Where Science Meets Fantasy
             </motion.p>
 
             {/* Main Title */}
@@ -116,8 +116,8 @@ const HeroSection = () => {
               transition={{ delay: 1.2, duration: 0.8 }}
               className="text-lg md:text-xl text-muted-foreground max-w-lg mx-auto lg:mx-0 mb-10 font-body"
             >
-              Master the mysteries of physics through interactive chapters and animated lessons. 
-              Explore electromagnetics, gravity, and more in an immersive fantasy world.
+              Master the fundamental forces. From the quantum realm to complex living systems,
+              explore the logic of the universe in one immersive world.
             </motion.p>
 
             {/* CTA Buttons */}
@@ -128,10 +128,10 @@ const HeroSection = () => {
               className="hidden flex-col sm:flex-row gap-4 justify-center lg:justify-start"
             >
               <button className="btn-celestial hoverable">
-                Start Learning
+                Begin Journey
               </button>
               <button className="btn-ghost hoverable">
-                Explore Chapters
+                View Modules
               </button>
             </motion.div>
           </motion.div>

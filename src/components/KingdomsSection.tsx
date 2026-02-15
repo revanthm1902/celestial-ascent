@@ -8,32 +8,35 @@ import kingdom3 from '@/assets/kingdom-2.png';
 
 const kingdoms = [
   {
-    title: 'Learning',
-    description: 'Master the fundamentals through interactive lessons and comprehensive tutorials. Build your knowledge step by step with our carefully crafted educational content and hands-on practice modules.',
+    id: 'kingdom-learning',
+    title: 'Kingdom of Learning',
+    description: 'Unlock the secrets of reality. From the quantum realm to cosmic scale, master the fundamental forces and living systems that weave the fabric of existence.',
     features: [
-      'Interactive tutorials and lessons',
-      'Step-by-step guided learning paths',
-      'Practice exercises and quizzes',
+      'Interactive Simulations',
+      'Visual Archives',
+      'Discovery Trails',
     ],
     image: kingdom1,
   },
   {
-    title: 'Ranking',
-    description: 'Track your progress and compete with others on the leaderboards. Climb the ranks by completing challenges, earning achievements, and demonstrating your mastery of physics concepts.',
+    id: 'kingdom-ranking',
+    title: 'Kingdom of Ranking',
+    description: 'Ascend the celestial hierarchy. Compete with global minds, solve the riddles of the universe, and claim your throne among the stars.',
     features: [
-      'Global leaderboard rankings',
-      'Achievement system and badges',
-      'Progress tracking and analytics',
+      'Global Leaderboards',
+      'Prestige Tiers',
+      'Legendary Achievements',
     ],
     image: kingdom2,
   },
   {
-    title: 'Gaming',
-    description: 'Learn through play with engaging physics-based games and challenges. Apply your knowledge in fun, interactive scenarios that make learning enjoyable and memorable.',
+    id: 'kingdom-gaming',
+    title: 'Kingdom of Gaming',
+    description: 'The ultimate sandbox. Apply your knowledge to build, break, and master the simulation in arenas where only the master of forces survives.',
     features: [
-      'Physics-based game challenges',
-      'Interactive simulations',
-      'Multiplayer learning competitions',
+      'Engineering Challenges',
+      'Bio-Labs',
+      'Physics Arenas',
     ],
     image: kingdom3,
   },
@@ -52,12 +55,12 @@ const KingdomsSection = () => {
   const backgroundOpacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
 
   return (
-    <section 
+    <section
       ref={sectionRef}
       className="relative py-32 overflow-hidden"
     >
       {/* Gradient background */}
-      <motion.div 
+      <motion.div
         className="absolute inset-0 bg-gradient-to-b from-void via-secondary/20 to-void"
         style={{ opacity: backgroundOpacity }}
       />
@@ -85,12 +88,13 @@ const KingdomsSection = () => {
         {/* Kingdom Cards */}
         <div className="space-y-32 md:space-y-48">
           {kingdoms.map((kingdom, index) => (
-            <KingdomCard
-              key={kingdom.title}
-              {...kingdom}
-              index={index}
-              isReversed={index % 2 === 1}
-            />
+            <div id={kingdom.id} key={kingdom.title} className="scroll-mt-24">
+              <KingdomCard
+                {...kingdom}
+                index={index}
+                isReversed={index % 2 === 1}
+              />
+            </div>
           ))}
         </div>
       </div>

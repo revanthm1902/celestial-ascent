@@ -1,5 +1,6 @@
 import { useState, Suspense } from 'react';
 import Preloader from '@/components/Preloader';
+import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
 import KingdomsSection from '@/components/KingdomsSection';
 import Footer from '@/components/Footer';
@@ -15,10 +16,10 @@ const Index = () => {
   return (
     <>
       {isLoading && <Preloader onComplete={() => setIsLoading(false)} />}
-      
+
       {!isLoading && (
         <SmoothScroll>
-          
+          <Navbar />
           <CustomCursor />
           <Suspense fallback={null}>
             <ParticleField />
