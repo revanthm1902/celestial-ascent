@@ -151,7 +151,7 @@ const jobs: JobRole[] = [
             'Maintain structured documentation and version control',
         ],
         skills: [
-            'Strong proficiency in Kotlin or Java',
+            'Strong proficiency in React Native and Vite/Expo frameworks',
             'Experience with Android SDK and modern architecture patterns',
             'Knowledge of performance optimization',
             'Experience integrating REST APIs',
@@ -439,7 +439,7 @@ const JobDetail = ({ job, onClose, onApply }: { job: JobRole; onClose: () => voi
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                     <circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" />
                                 </svg>
-                                Full-time Position
+                                Full-time Position/ Internship
                             </div>
                         </div>
                     </div>
