@@ -18,6 +18,7 @@ const ENABLE_ENTER_REALM = true;
 
 const App = () => {
   const [hasEntered, setHasEntered] = useState(!ENABLE_ENTER_REALM);
+  const [hasLoadedIndex, setHasLoadedIndex] = useState(false);
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -30,7 +31,7 @@ const App = () => {
         ) : (
           <BrowserRouter>
             <Routes>
-              <Route path="/" element={<Index />} />
+              <Route path="/" element={<Index hasLoaded={hasLoadedIndex} onComplete={() => setHasLoadedIndex(true)} />} />
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/careers" element={<Careers />} />

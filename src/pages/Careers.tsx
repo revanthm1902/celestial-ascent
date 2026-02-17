@@ -705,6 +705,7 @@ const Careers = () => {
 
                         {/* Job Grid */}
                         <motion.div
+                            key={activeCategory}
                             className="grid md:grid-cols-2 gap-4"
                             initial="hidden"
                             whileInView="show"

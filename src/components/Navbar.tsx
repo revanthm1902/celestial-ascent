@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate, useLocation } from 'react-router-dom';
 
@@ -57,9 +57,9 @@ const Navbar = () => {
         // Show navbar after a small delay when entering the realm
         const showTimer = setTimeout(() => {
             setIsVisible(true);
-            // Auto-hide after 3 seconds if user hasn't scrolled
+            // Auto-hide after 3 seconds if user hasn't scrolled and no interaction
             const hideTimer = setTimeout(() => {
-                if (window.scrollY < 100) {
+                if (window.scrollY < 100 && !mouseNearTop && !isMovingUp) {
                     setIsVisible(false);
                 }
             }, 3000);
@@ -69,32 +69,156 @@ const Navbar = () => {
         return () => clearTimeout(showTimer);
     }, []);
 
+    const lastScrollY = useRef(0);
+    const [mouseNearTop, setMouseNearTop] = useState(false);
+    const [isMovingUp, setIsMovingUp] = useState(false);
+    const movingUpTimeout = useRef<NodeJS.Timeout>();
+
+    useEffect(() => {
+        const handleMouseMove = (e: MouseEvent) => {
+            const heroHeight = window.innerHeight;
+            // Only tracking for Hero Section interactions
+            if (window.scrollY < heroHeight * 0.8) {
+
+                // 1. Near Top Detection
+                if (e.clientY < 100) {
+                    setMouseNearTop(true);
+                } else {
+                    setMouseNearTop(false);
+                }
+
+                // 2. Movement Up Detection
+                if (e.movementY < -1) { // Moving Up significantly
+                    setIsMovingUp(true);
+                    // Clear existing timeout to keep it active while moving
+                    if (movingUpTimeout.current) clearTimeout(movingUpTimeout.current);
+
+                    // Reset after stop moving
+                    movingUpTimeout.current = setTimeout(() => {
+                        setIsMovingUp(false);
+                    }, 1000);
+                } else if (e.movementY > 1) { // Moving Down
+                    setIsMovingUp(false);
+                    if (movingUpTimeout.current) clearTimeout(movingUpTimeout.current);
+                }
+            }
+        };
+
+        window.addEventListener('mousemove', handleMouseMove);
+        return () => {
+            window.removeEventListener('mousemove', handleMouseMove);
+            if (movingUpTimeout.current) clearTimeout(movingUpTimeout.current);
+        };
+    }, []);
+
     useEffect(() => {
         const handleScroll = () => {
             const heroHeight = window.innerHeight;
             const scrollY = window.scrollY;
 
             if (scrollY > heroHeight * 0.8) {
+                // Passed Hero: Always Sticky/Visible
                 if (!hasPassedHero) {
                     setHasPassedHero(true);
                     setIsVisible(true);
-                    // Stagger reveal each nav item
                     navItems.forEach((_, i) => {
                         setTimeout(() => {
                             setRevealedCount(prev => Math.max(prev, i + 1));
                         }, i * 150);
                     });
+                } else {
+                    setIsVisible(true);
                 }
-            } else if (scrollY < 100) {
-                setHasPassedHero(false);
-                setRevealedCount(0);
-                setIsVisible(false);
+            } else {
+                // In Hero Section
+                if (hasPassedHero) {
+                    setHasPassedHero(false);
+                    setRevealedCount(0);
+                    setIsVisible(false); // Reset to hidden logic upon re-entry
+                }
+                // Visibility handled by Mouse Logic below
             }
+            lastScrollY.current = scrollY;
         };
 
         window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
-    }, [hasPassedHero]);
+    }, [hasPassedHero, revealedCount]); // Removed location dependency -> Applied Globally
+
+    // Combined Visibility Logic for Hero Section
+    useEffect(() => {
+        if (!hasPassedHero) {
+            if (mouseNearTop || isMovingUp) {
+                setIsVisible(true);
+                // Ensure items are revealed immediately or staggered
+                if (revealedCount === 0) {
+                    navItems.forEach((_, i) => {
+                        setTimeout(() => {
+                            setRevealedCount(prev => Math.max(prev, i + 1));
+                        }, i * 50); // Faster stagger for hover
+                    });
+                }
+            } else {
+                setIsVisible(false);
+                // Optional: Reset revealed count when hiding? 
+                // If we reset, they animate in again next time. 
+                setRevealedCount(0);
+            }
+        }
+    }, [mouseNearTop, isMovingUp, hasPassedHero, revealedCount]);
+
+    // Initial Reveal Timer - kept as is, but ensuring it doesn't conflict too hard.
+    // UseEffect at top sets isVisible(true) then (false) after 3s.
+    // Our new logic above might override it immediately if mouse is idle?
+    // "if (!hasPassedHero) ... setIsVisible(false)" will fire immediately if mouse is idle.
+    // We should gate the above effect?
+    // Let's add 'hasInteracted' state? Or just let the timer win for first 3s?
+    // Simpler: The Mouse Logic is reactive. If mouse doesn't move, it doesn't fire?
+    // No, dependencies [mouseNearTop, isMovingUp] will fire on mount with initial false/false.
+
+    // Fix: Only apply the strict "Hide" if we have actually moved the mouse?
+    // Or just let the 1s timeout in the first useEffect force it True.
+    // If we set False here, it might flicker.
+    // Let's modify the first useEffect to use a ref 'isInitialSequence'.
+
+    // Actually, user said: "in landing page we'll just show navbar and then it hides... and if you move your mouse upwards..."
+    // So the initial behavior is correct.
+    // We just need to make sure we don't clobber it.
+    // If I add `window.scrollY > 0` check?
+
+    // Let's try this:
+    // The first useEffect sets `isVisible(true)` at 1s.
+    // This effect sets `isVisible(false)` immediately because `!mouseNearTop`.
+    // We need to prevent this effect from firing untl the initial sequence is done?
+    // Or just accept the user input controls it.
+
+    // Refined approach:
+    // If standard "Hero" logic implies Hidden, only show on Interaction.
+    // But we WANT the initial show.
+    // Let's remove the strict `else { setIsVisible(false) }` and rely on `useEffect` cleaning it up?
+    // No, "move down then it'll go". We need explicit Hide.
+
+    // Compromise: Add a `isInteracting` flag? 
+    // Or just use the fact that the initial timer uses `setTimeout`.
+    // It will overwrite our State later. ( Last write wins ).
+    // At T=0: isVisible=False.
+    // T=0.1: This effect runs -> isVisible=False.
+    // T=1000: Initial Timer runs -> isVisible=True.
+    // T=4000: Initial Timer runs -> isVisible=False.
+    // User moves mouse at T=2000 -> isMovingUp=True -> isVisible=True.
+    // User stops at T=2500 -> isMovingUp=False -> isVisible=False.
+
+    // This seems fine! The automatic timer events will just act as transient "Show" requests.
+    // The movement logic acts as transient "Show" requests too.
+    // The "Default" is False (Hide) when in Hero.
+
+    // One edge case: The initial timer might Hide it while we are Moving Up?
+    // Timer says `if (scrollY < 100) setIsVisible(false)`.
+    // If we are moving up, we want it TextVisible.
+    // So we should update that helper too.
+
+
+
 
     // On non-home pages, always show navbar
     useEffect(() => {

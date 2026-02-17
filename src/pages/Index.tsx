@@ -9,12 +9,20 @@ import ParticleField from '@/components/ParticleField';
 import SmoothScroll from '@/components/SmoothScroll';
 import ScrollToTop from '@/components/ScrollToTop';
 
-const Index = () => {
-  const [isLoading, setIsLoading] = useState(true);
+interface IndexProps {
+  hasLoaded?: boolean;
+  onComplete?: () => void;
+}
+
+const Index = ({ hasLoaded = false, onComplete }: IndexProps) => {
+  const [isLoading, setIsLoading] = useState(!hasLoaded);
 
   return (
     <>
-      {isLoading && <Preloader onComplete={() => setIsLoading(false)} />}
+      {isLoading && <Preloader onComplete={() => {
+        setIsLoading(false);
+        onComplete?.();
+      }} />}
 
       {!isLoading && (
         <SmoothScroll>
