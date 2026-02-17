@@ -101,7 +101,7 @@ const KingdomsSection = () => {
               {/* Arrow Connector */}
               {index < kingdoms.length - 1 && (
                 <div
-                  className={`hidden md:block absolute -bottom-32 lg:-bottom-48 z-0 opacity-80 left-1/2 -translate-x-1/2 w-full max-w-5xl h-64 pointer-events-none`}
+                  className={`hidden md:block absolute -bottom-48 lg:-bottom-64 z-0 opacity-80 left-1/2 -translate-x-1/2 w-full max-w-6xl h-96 pointer-events-none`}
                 >
                   <KingdomArrow
                     direction={index === 0 ? 'ltr' : 'rtl'}

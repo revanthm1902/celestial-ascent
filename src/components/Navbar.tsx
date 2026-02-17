@@ -78,26 +78,33 @@ const Navbar = () => {
         const handleMouseMove = (e: MouseEvent) => {
             const heroHeight = window.innerHeight;
             // Only tracking for Hero Section interactions
+            // AND strictly top 20% for "Move Up" gesture
             if (window.scrollY < heroHeight * 0.8) {
 
-                // 1. Near Top Detection
+                // 1. Near Top Detection (Immediate Show)
                 if (e.clientY < 100) {
                     setMouseNearTop(true);
                 } else {
                     setMouseNearTop(false);
                 }
 
-                // 2. Movement Up Detection
-                if (e.movementY < -1) { // Moving Up significantly
-                    setIsMovingUp(true);
-                    // Clear existing timeout to keep it active while moving
-                    if (movingUpTimeout.current) clearTimeout(movingUpTimeout.current);
+                // 2. Movement Up Detection - RESTRICTED TO TOP 20%
+                if (e.clientY < heroHeight * 0.2) {
+                    if (e.movementY < -1) { // Moving Up significantly
+                        setIsMovingUp(true);
+                        // Clear existing timeout to keep it active while moving
+                        if (movingUpTimeout.current) clearTimeout(movingUpTimeout.current);
 
-                    // Reset after stop moving
-                    movingUpTimeout.current = setTimeout(() => {
+                        // Reset after stop moving
+                        movingUpTimeout.current = setTimeout(() => {
+                            setIsMovingUp(false);
+                        }, 1000);
+                    } else if (e.movementY > 1) { // Moving Down
                         setIsMovingUp(false);
-                    }, 1000);
-                } else if (e.movementY > 1) { // Moving Down
+                        if (movingUpTimeout.current) clearTimeout(movingUpTimeout.current);
+                    }
+                } else {
+                    // If cursor is below 20%, force isMovingUp to false (so navbar hides if it was shown)
                     setIsMovingUp(false);
                     if (movingUpTimeout.current) clearTimeout(movingUpTimeout.current);
                 }

@@ -36,10 +36,10 @@ const KingdomArrow = ({ direction, className = '' }: KingdomArrowProps) => {
                 viewBox="0 0 400 200"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                className="w-full h-full drop-shadow-[0_0_10px_rgba(255,215,0,0.3)]"
+                className="w-full h-full drop-shadow-[0_0_15px_rgba(255,215,0,0.5)]"
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, margin: "-100px" }}
+                viewport={{ once: false, amount: 0.4 }} // Repeat animation when scrolling
                 preserveAspectRatio="none"
             >
                 {isRTL ? (
@@ -48,8 +48,9 @@ const KingdomArrow = ({ direction, className = '' }: KingdomArrowProps) => {
                         <motion.path
                             d="M 320 20 C 320 120, 80 80, 80 180"
                             stroke="url(#arrow-gradient)"
-                            strokeWidth="4"
+                            strokeWidth="6"
                             strokeLinecap="round"
+                            strokeDasharray="20 20"
                             fill="none"
                             variants={pathVariants}
                         />
@@ -57,7 +58,7 @@ const KingdomArrow = ({ direction, className = '' }: KingdomArrowProps) => {
                         <motion.path
                             d="M 60 165 L 80 180 L 100 165"
                             stroke="url(#arrow-gradient)"
-                            strokeWidth="4"
+                            strokeWidth="6"
                             strokeLinecap="round"
                             strokeLinejoin="round"
                             fill="none"
@@ -70,8 +71,9 @@ const KingdomArrow = ({ direction, className = '' }: KingdomArrowProps) => {
                         <motion.path
                             d="M 80 20 C 80 120, 320 80, 320 180"
                             stroke="url(#arrow-gradient)"
-                            strokeWidth="4"
+                            strokeWidth="6"
                             strokeLinecap="round"
+                            strokeDasharray="20 20"
                             fill="none"
                             variants={pathVariants}
                         />
@@ -79,7 +81,7 @@ const KingdomArrow = ({ direction, className = '' }: KingdomArrowProps) => {
                         <motion.path
                             d="M 300 165 L 320 180 L 340 165"
                             stroke="url(#arrow-gradient)"
-                            strokeWidth="4"
+                            strokeWidth="6"
                             strokeLinecap="round"
                             strokeLinejoin="round"
                             fill="none"
