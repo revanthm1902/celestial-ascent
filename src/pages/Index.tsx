@@ -8,7 +8,6 @@ import CustomCursor from '@/components/CustomCursor';
 import ParticleField from '@/components/ParticleField';
 import SmoothScroll from '@/components/SmoothScroll';
 import ScrollToTop from '@/components/ScrollToTop';
-import Logo from '@/components/Logo';
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);

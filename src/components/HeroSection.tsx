@@ -88,7 +88,7 @@ const HeroSection = () => {
               transition={{ delay: 0.3, duration: 0.8 }}
               className="text-gold tracking-[0.4em] uppercase text-sm mb-6 font-body"
             >
-              Where Science Meets Fantasy
+          
             </motion.p>
 
             {/* Main Title */}

@@ -9,7 +9,7 @@ import kingdom3 from '@/assets/kingdom-2.png';
 const kingdoms = [
   {
     id: 'kingdom-learning',
-    title: 'Kingdom of Learning',
+    title: 'Kingdom of Adventure',
     description: 'Unlock the secrets of reality. From the quantum realm to cosmic scale, master the fundamental forces and living systems that weave the fabric of existence.',
     features: [
       'Interactive Simulations',
@@ -31,7 +31,7 @@ const kingdoms = [
   },
   {
     id: 'kingdom-gaming',
-    title: 'Kingdom of Gaming',
+    title: 'Kingdom of Fun',
     description: 'The ultimate sandbox. Apply your knowledge to build, break, and master the simulation in arenas where only the master of forces survives.',
     features: [
       'Engineering Challenges',

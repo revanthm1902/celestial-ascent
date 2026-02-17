@@ -232,9 +232,7 @@ const EnterRealm = ({ onEnter }: EnterRealmProps) => {
                         transition={{ delay: 0.5, duration: 1 }}
                         className="w-full flex justify-between px-2 mt-6"
                     >
-                        <p className="text-white text-sm md:text-lg font-mono tracking-[0.8em] uppercase w-full text-center">
-                            WHERE SCIENCE MEETS FANTASY
-                        </p>
+                        
                     </motion.div>
 
                     {/* Glow Behind Title */}
