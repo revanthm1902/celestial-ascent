@@ -14,6 +14,7 @@ const quickLinks = [
   { name: 'Home', href: '/' },
   { name: 'About', href: '/about' },
   { name: 'Careers', href: '/careers' },
+  { name: 'Creators', href: 'https://creators.aryverse.com/' },
   { name: 'Contact', href: '/contact' },
 ];
 
@@ -22,6 +23,10 @@ const Footer = () => {
   const navigate = useNavigate();
 
   const handleQuickLink = (href: string) => {
+    if (href.startsWith('http')) {
+      window.location.href = href;
+      return;
+    }
     if (href === '/') {
       if (window.location.pathname !== '/') {
         navigate('/');
